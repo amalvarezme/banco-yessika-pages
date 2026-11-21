@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Constelación de publicaciones | Banco Yessika</title>
+  <link rel="stylesheet" href="atlas.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three/three.module.js"}}</script>
+  <script type="module" src="atlas.js"></script>
+</head>
+<body>
+  <header>
+    <a href="./">← Banco Yessika</a>
+    <h1>Constelación de publicaciones</h1>
+    <p>Un sol por publicación, planetas para sus aportes y arcos para temas compartidos. Los arcos no son citas.</p>
+  </header>
+  <main>
+    <form class="selector" id="buscar-atlas">
+      <label>Buscar publicación<input id="publicacion" type="search" list="publicaciones-atlas" placeholder="ID o palabras del título"></label>
+      <datalist id="publicaciones-atlas"></datalist>
+      <button type="submit">Buscar</button>
+      <label>Filtrar por clúster<select id="cluster"><option value="">Todos los clústeres</option></select></label>
+    </form>
+    <div class="controles" role="group" aria-label="Controles de cámara">
+      <button id="mas">Zoom +</button><button id="menos">Zoom −</button>
+      <button id="izquierda" aria-label="Girar a la izquierda">⟲ Girar</button><button id="derecha" aria-label="Girar a la derecha">Girar ⟳</button>
+      <button id="arriba" aria-label="Inclinar hacia arriba">↑ Inclinar</button><button id="abajo" aria-label="Inclinar hacia abajo">↓ Inclinar</button>
+      <button id="rotacion" aria-pressed="false">Rotación automática</button>
+      <button id="nombres" aria-pressed="true">Nombres</button>
+      <button id="disposicion" aria-pressed="false">Disposición de grupos</button>
+      <button id="reiniciar">Reiniciar vista</button>
+    </div>
+    <p id="estado-atlas" role="status">Cargando constelación…</p>
+    <div class="marco">
+      <div id="cielo" aria-label="Cielo de publicaciones">
+        <div id="nombres-atlas" aria-hidden="true"></div>
+        <div id="pista-atlas" aria-hidden="true" hidden></div>
+      </div>
+      <aside id="lectura-atlas" aria-label="Lectura del sistema">
+        <div id="detalle-atlas" aria-live="polite"><h2>Explorá un sistema</h2><p>Elegí un sol o buscá su publicación. Los planetas muestran las partes de la ficha.</p></div>
+        <div id="planetas" role="group" aria-label="Planetas de la publicación"></div>
+      </aside>
+    </div>
+    <p class="pie">Arrastrá para girar y usá la rueda o dos dedos para acercarte. Doble clic en un nodo para centrarlo. <a id="modo-atlas" href="?view=2d">Ver en 2D</a></p>
+    <details class="pie"><summary>Leyenda de planetas y enlaces</summary><ul id="leyenda-atlas"></ul></details>
+    <noscript><p>Necesitás JavaScript para girar la constelación. <a href="./">Consultar el catálogo</a>.</p></noscript>
+  </main>
+</body>
+</html>

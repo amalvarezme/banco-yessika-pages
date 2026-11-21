@@ -1,0 +1,39 @@
+:root { color-scheme: dark; font: 1rem/1.5 system-ui, sans-serif; color: #edf2ff; background: #090f1c; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; }
+a { color: #a5d4ff; text-underline-offset: .22em; }
+:focus-visible { outline: 2px solid #ffdc83; outline-offset: 3px; }
+header, main { width: min(100% - 2rem, 86rem); margin-inline: auto; }
+header { padding-block: 1.15rem .65rem; }
+h1 { margin: .25em 0 0; font-size: clamp(1.5rem, 4vw, 2.45rem); line-height: 1.15; }
+p { margin-block: .35rem .85rem; color: #bfcae3; }
+.selector, .controles, #planetas { display: flex; gap: .45rem; flex-wrap: wrap; }
+.selector label { flex: 1 1 15rem; display: grid; gap: .2rem; min-width: 0; font-size: .875rem; }
+.controles { margin-top: .65rem; }
+.selector { align-items: end; }
+button, select, input { font: inherit; min-height: 2.75rem; padding: .35rem .65rem; color: inherit; background: #18243a; border: 1px solid #566987; border-radius: .3rem; }
+select, input { width: 100%; min-width: 0; }
+#pista-atlas { position: absolute; z-index: 2; left: .65rem; bottom: .65rem; max-width: calc(100% - 1.3rem); padding: .3rem .55rem; border-radius: .3rem; background: #142240; color: #f6e4a4; pointer-events: none; font-size: .82rem; }
+button { cursor: pointer; }
+button[aria-pressed="true"] { color: #111827; background: #ffdc83; border-color: #ffdc83; }
+#estado-atlas { min-height: 1.5rem; margin-block: .5rem; font-size: .875rem; }
+.marco { display: grid; grid-template-columns: minmax(0, 1fr) minmax(14rem, 20rem); border: 1px solid #364662; border-radius: .55rem; }
+#cielo { position: relative; height: clamp(370px, 65vh, 740px); isolation: isolate; background: radial-gradient(ellipse at 50% 45%, #151e38, #060913 75%); border-radius: inherit; }
+#cielo canvas, #nombres-atlas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border-radius: inherit; }
+#cielo canvas { touch-action: none; cursor: grab; }
+#cielo canvas:active { cursor: grabbing; }
+#nombres-atlas { z-index: 1; pointer-events: none; overflow: hidden; }
+#nombres-atlas span { position: absolute; max-width: min(15rem, 53%); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: #ffdd8b; background: #090f1ce8; padding-inline: .25rem; border-radius: .2rem; font-size: .75rem; }
+aside { min-width: 0; padding: .9rem; background: #101a2c; border-inline-start: 1px solid #364662; overflow-wrap: anywhere; }
+aside h2 { margin: 0 0 .35rem; font-size: 1.05rem; }
+#planetas { margin-block-start: .8rem; }
+#planetas button { font-size: .78rem; }
+.pie { margin-block: .8rem; font-size: .875rem; }
+#leyenda-atlas { display: flex; flex-wrap: wrap; gap: .6rem 1.3rem; padding-inline-start: 1.3rem; }
+#leyenda-atlas li::marker { color: var(--planeta); }
+@media (max-width: 49rem) {
+  .marco { grid-template-columns: minmax(0, 1fr); }
+  #cielo { height: clamp(300px, 52vh, 520px); }
+  aside { border-inline-start: 0; border-block-start: 1px solid #364662; }
+}
