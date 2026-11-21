@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Banco Yessika | Publicaciones</title>
+  <meta name="description" content="Catálogo de publicaciones de Yessika Milena Rojas Villegas sobre neurología, cefaleas y migraña.">
+  <link rel="stylesheet" href="estilos.css">
+  <script src="constelacion.js" defer></script>
+  <script src="tablero.js" defer></script>
+</head>
+<body>
+  <header class="cabecera">
+    <div class="contenedor">
+      <p class="marca">Banco Yessika <span>·</span> Catálogo de investigación</p>
+      <h1>Yessika Milena<br>Rojas Villegas</h1>
+      <p class="subtitulo">Neurología clínica · Cefaleas y migraña</p>
+      <a href="https://orcid.org/0000-0002-8307-0551">ORCID 0000-0002-8307-0551</a>
+      <a class="ir-catalogo" href="#titulo-catalogo">Ir al catálogo</a>
+    </div>
+  </header>
+  <main class="contenedor" id="catalogo">
+    <section id="constelacion" aria-labelledby="titulo-red" hidden>
+      <div class="presentacion-red">
+        <h2 id="titulo-red">Constelación de publicaciones</h2>
+        <p id="descripcion-red">Cada nodo representa una publicación. Las líneas indican temas compartidos, no citas. Elegí un nodo para ver su ficha.</p>
+      </div>
+      <div class="panel-red">
+        <svg id="mapa-red" viewBox="0 0 440 320" aria-label="Mapa de publicaciones" aria-describedby="descripcion-red"></svg>
+        <div class="lateral-red">
+          <div class="giro-red">
+            <label for="giro">Giro horizontal</label>
+            <input id="giro" type="range" min="-60" max="60" value="18">
+            <button id="reiniciar-giro" type="button">Restablecer giro</button>
+          </div>
+          <ul id="leyenda-red" aria-label="Grupos temáticos"></ul>
+          <div id="lectura-red" aria-live="polite"><p>Seleccioná una publicación del mapa.</p></div>
+        </div>
+      </div>
+    </section>
+    <h2 id="titulo-catalogo">Publicaciones</h2>
+    <div class="filtros" id="filtros" hidden>
+      <div class="campo">
+        <label for="buscar">Buscar publicaciones</label>
+        <input id="buscar" type="search" aria-describedby="alcance" placeholder="Ej.: estado migrañoso">
+      </div>
+      <div class="campo">
+        <label for="grupo">Grupo temático</label>
+        <select id="grupo"><option value="">Todos los grupos</option></select>
+      </div>
+      <button id="limpiar" type="button">Limpiar filtros</button>
+      <p id="alcance">Busca por título, autoría, revista, tema, palabra clave o DOI.</p>
+    </div>
+    <noscript><p>Activa JavaScript para consultar el catálogo interactivo.</p></noscript>
+    <p class="estado" id="estado" role="status"></p>
+    <p id="vacio" hidden>No hay publicaciones con esos criterios. Prueba con otro término o limpia los filtros.</p>
+    <ul id="publicaciones" aria-label="Resultados de publicaciones"></ul>
+  </main>
+  <footer class="contenedor pie">Los resúmenes se basan en las fuentes declaradas en cada ficha. Las ideas futuras no forman parte de las publicaciones originales.</footer>
+</body>
+</html>

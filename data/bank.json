@@ -1,0 +1,657 @@
+{
+  "topics": {
+    "T01": {
+      "name": "Migraña: epidemiología, carga y diagnóstico",
+      "scope": "prevalencia, discapacidad, criterios diagnósticos, migraña con y sin aura, cefalea primaria frente a secundaria"
+    },
+    "T02": {
+      "name": "Tratamiento agudo de la crisis de migraña",
+      "scope": "tratamiento abortivo ambulatorio, manejo intrahospitalario y parenteral, AINE, triptanes, geptantes, exclusión de opioides, GRADE"
+    },
+    "T03": {
+      "name": "Tratamiento preventivo de la migraña",
+      "scope": "migraña episódica y crónica, primera y segunda línea, propranolol, topiramato, amitriptilina, flunarizina, valproato, candesartán"
+    },
+    "T04": {
+      "name": "Estado migrañoso y salas de infusión",
+      "scope": "status migrañoso, sala de infusión, dexametasona, lidocaína, predictores de respuesta, evitación de hospitalización"
+    },
+    "T05": {
+      "name": "Cefaleas y sistemas de salud",
+      "scope": "acceso, inequidad, cobertura, razón de neurólogos, educación médica, telemedicina, políticas y consensos de sociedades científicas, ASOLAC"
+    },
+    "T06": {
+      "name": "Terapias biológicas y de nueva generación",
+      "scope": "anticuerpos anti-CGRP: galcanezumab, erenumab, fremanezumab; geptantes: rimegepant, atogepant; onabotulinumtoxinA; efectividad en vida real"
+    },
+    "T07": {
+      "name": "Comorbilidad afectiva y neuropsiquiatría",
+      "scope": "ansiedad, depresión, GAD-7, PHQ-9, HIT-6, impacto en calidad de vida, salud mental del cuidador"
+    },
+    "T08": {
+      "name": "Demencia, cognición y cuidador",
+      "scope": "deterioro cognitivo, CDR, Barthel, escala de Zarit, carga del cuidador, población militar"
+    },
+    "T09": {
+      "name": "Educación médica y divulgación a pacientes",
+      "scope": "formación en cefaleas, educación a pacientes y comunidad, material de divulgación, sociedades científicas"
+    }
+  },
+  "links": [
+    {
+      "from": "A001",
+      "to": "A007",
+      "rel": "shares_topic",
+      "topics": [
+        "T07"
+      ],
+      "sim": 0.05,
+      "source": "derived"
+    },
+    {
+      "from": "A002",
+      "to": "A003",
+      "rel": "shares_topic",
+      "topics": [
+        "T02"
+      ],
+      "sim": 0.059,
+      "source": "derived"
+    },
+    {
+      "from": "A002",
+      "to": "A006",
+      "rel": "shares_topic",
+      "topics": [
+        "T02",
+        "T04"
+      ],
+      "sim": 0.125,
+      "source": "derived"
+    },
+    {
+      "from": "A003",
+      "to": "A005",
+      "rel": "shares_topic",
+      "topics": [
+        "T01"
+      ],
+      "sim": 0.2,
+      "source": "derived"
+    },
+    {
+      "from": "A003",
+      "to": "A006",
+      "rel": "shares_topic",
+      "topics": [
+        "T02"
+      ],
+      "sim": 0.2,
+      "source": "derived"
+    },
+    {
+      "from": "A003",
+      "to": "A008",
+      "rel": "shares_topic",
+      "topics": [
+        "T01"
+      ],
+      "sim": 0.056,
+      "source": "derived"
+    },
+    {
+      "from": "A004",
+      "to": "A005",
+      "rel": "shares_topic",
+      "topics": [
+        "T03"
+      ],
+      "sim": 0.2,
+      "source": "derived"
+    },
+    {
+      "from": "A004",
+      "to": "A007",
+      "rel": "shares_topic",
+      "topics": [
+        "T03",
+        "T06"
+      ],
+      "sim": 0.235,
+      "source": "derived"
+    },
+    {
+      "from": "A005",
+      "to": "A007",
+      "rel": "shares_topic",
+      "topics": [
+        "T03"
+      ],
+      "sim": 0.105,
+      "source": "derived"
+    },
+    {
+      "from": "A005",
+      "to": "A008",
+      "rel": "shares_topic",
+      "topics": [
+        "T01"
+      ],
+      "sim": 0.056,
+      "source": "derived"
+    },
+    {
+      "from": "A008",
+      "to": "A009",
+      "rel": "shares_topic",
+      "topics": [
+        "T05"
+      ],
+      "sim": 0.333,
+      "source": "derived"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "C01",
+      "name": "Crisis aguda y estado migrañoso",
+      "top_terms": [
+        "consenso",
+        "grade",
+        "aine",
+        "dexametasona",
+        "escala analoga del dolor",
+        "estado migranoso",
+        "lidocaina",
+        "migrana"
+      ],
+      "topics": {
+        "T02": 3,
+        "T04": 2,
+        "T01": 1
+      },
+      "members": [
+        "A002",
+        "A003",
+        "A006"
+      ]
+    },
+    {
+      "id": "C02",
+      "name": "Prevención y terapias anti-CGRP",
+      "top_terms": [
+        "galcanezumab",
+        "grade",
+        "migrana cronica",
+        "migrana episodica",
+        "tratamiento preventivo",
+        "aha/acc",
+        "anti-cgrp",
+        "asolac"
+      ],
+      "topics": {
+        "T03": 3,
+        "T06": 2,
+        "T01": 1,
+        "T07": 1
+      },
+      "members": [
+        "A004",
+        "A005",
+        "A007"
+      ]
+    },
+    {
+      "id": "C03",
+      "name": "Sistemas de salud y equidad en cefaleas",
+      "top_terms": [
+        "america latina",
+        "asolac",
+        "migrana",
+        "acceso a tratamiento",
+        "anti-cgrp",
+        "carta al editor",
+        "discusion academica",
+        "educacion medica"
+      ],
+      "topics": {
+        "T05": 2,
+        "T01": 1
+      },
+      "members": [
+        "A008",
+        "A009"
+      ]
+    },
+    {
+      "id": "C04",
+      "name": "Demencia y carga del cuidador",
+      "top_terms": [
+        "barthel",
+        "carga del cuidador",
+        "cdr",
+        "demencia",
+        "escala de zarit",
+        "poblacion militar",
+        "salud mental del cuidador"
+      ],
+      "topics": {
+        "T07": 1,
+        "T08": 1
+      },
+      "members": [
+        "A001"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "A001",
+      "slug": "la-carga-del-cuidador-de-pacientes-con-demencia-en-una-pobla",
+      "title": "La carga del cuidador de pacientes con demencia en una población militar: estudio descriptivo",
+      "titulo_corto": "Carga del cuidador de pacientes con demencia en población militar",
+      "year": 2021,
+      "journal": "Acta neurológica colombiana",
+      "doi": "10.22379/24224022327",
+      "authors": [
+        "Yessika Milena Rojas Villegas",
+        "Geraldine Peralta Suárez",
+        "Gerardo Ardila",
+        "Luisa Fernanda Guzmán Molano",
+        "Gabriel Centanaro"
+      ],
+      "cluster": "C04 Demencia y carga del cuidador",
+      "temas": [
+        "T08",
+        "T07"
+      ],
+      "palabras_clave": [
+        "demencia",
+        "carga del cuidador",
+        "escala de Zarit",
+        "Barthel",
+        "CDR",
+        "población militar",
+        "salud mental del cuidador"
+      ],
+      "fuente": "abstract",
+      "aplicacion": "Cuidadores familiares de pacientes con demencia atendidos en el Hospital Militar Central (Bogotá, población militar colombiana).",
+      "problema": "La demencia no afecta solo a quien la padece: el cuidador es un pilar del manejo y su sobrecarga suele quedar fuera de la valoración clínica. Se desconoce el grado de carga en cuidadores de una población militar colombiana.",
+      "propuesta": "Estudio descriptivo longitudinal sobre 50 binomios cuidador-paciente atendidos entre agosto de 2016 y abril de 2018, con medición de la carga mediante la escala de Zarit y valoración funcional y cognitiva del paciente (Barthel y clasificación clínica de demencia de Hughes, CDR), además de los ingresos hospitalarios durante un año.",
+      "metodos": "Estudio descriptivo longitudinal; escala de Zarit, índice de Barthel, CDR de Hughes y registro de ingresos hospitalarios a un año; análisis de asociación entre carga y variables del paciente.",
+      "resultados": "Se incluyeron 50 cuidadores y 50 pacientes; 45 cuidadores (90 %) fueron mujeres, con edad promedio de 60 años (DE 15; rango 24-85). La carga fue intensa en 33 cuidadores (66 %) y la sensación de abandono de sí mismo fue la principal dimensión reportada. La mayor carga se asoció con el mayor deterioro cognitivo (CDR = 3; p = 0,008), pero no con la funcionalidad física medida con Barthel.",
+      "conclusiones": "La sobrecarga del cuidador se relaciona con el deterioro cognitivo del paciente más que con su dependencia física, lo que desplaza el foco de la intervención hacia el estadio cognitivo y el apoyo al cuidador.",
+      "idea_futura": "Trasladar la medición de sobrecarga del cuidador a los cuidadores de pacientes con cefalea crónica y migraña refractaria, donde la discapacidad del paciente también recae sobre la familia y no se mide de forma sistemática."
+    },
+    {
+      "id": "A002",
+      "slug": "predictores-de-respuesta-terapeutica-del-estado-migranoso-en",
+      "title": "Predictores de respuesta terapéutica del estado migrañoso en una sala de infusión",
+      "titulo_corto": "Predictores de respuesta del estado migrañoso en sala de infusión",
+      "year": 2022,
+      "journal": "Acta neurológica colombiana",
+      "doi": "10.22379/24224022407",
+      "authors": [
+        "Yessika Milena Rojas Villegas",
+        "María Alejandra González",
+        "David Puerta Martínez",
+        "María Camila Vélez Peláez",
+        "Natalia Hernández-Beltrán"
+      ],
+      "cluster": "C01 Crisis aguda y estado migrañoso",
+      "temas": [
+        "T04",
+        "T02"
+      ],
+      "palabras_clave": [
+        "estado migrañoso",
+        "sala de infusión",
+        "dexametasona",
+        "lidocaína",
+        "predictores de respuesta",
+        "escala análoga del dolor",
+        "migraña sin aura"
+      ],
+      "fuente": "abstract",
+      "aplicacion": "Pacientes adultos con estado migrañoso tratados en una sala de infusión, como alternativa a la hospitalización convencional.",
+      "problema": "El estado migrañoso suele resolverse con hospitalización para estudios diagnósticos y tratamiento; las salas de infusión pueden reducir ingresos y exámenes innecesarios, pero se desconoce qué factores predicen la respuesta terapéutica.",
+      "propuesta": "Cohorte retrospectiva de pacientes con estado migrañoso atendidos en sala de infusión entre febrero y agosto de 2019, con revisión de historia clínica, medición del dolor con escala análoga al inicio y al final del tratamiento (respondedor: mejoría > 50 %) y regresión logística para identificar predictores.",
+      "metodos": "Cohorte retrospectiva con revisión de historias clínicas; escala análoga del dolor pre y pos tratamiento; regresión logística de factores predictores de respuesta.",
+      "resultados": "Se incluyeron 124 pacientes con edad promedio de 36 años (DE 12), 82,3 % mujeres. La duración promedio del estado migrañoso fue de 8 días (DE 4), el 73,4 % de los casos se presentó sin aura y 97 pacientes (78,2 %) fueron respondedores. Los factores predictores de buena respuesta fueron el uso de dexametasona (OR 4,3) y no usar lidocaína (OR 6,0).",
+      "conclusiones": "La mayoría de los pacientes respondió favorablemente, lo que respalda las salas de infusión como alternativa al manejo intrahospitalario de la migraña; el esteroide forma parte fundamental del manejo una vez instaurado el estado migrañoso.",
+      "idea_futura": "Validar los predictores en una cohorte prospectiva multicéntrica y construir una regla clínica simple para decidir qué paciente con estado migrañoso puede manejarse en sala de infusión y cuál requiere hospitalización."
+    },
+    {
+      "id": "A003",
+      "slug": "recomendaciones-basadas-en-evidencia-para-el-manejo-ambulato",
+      "title": "Recomendaciones basadas en evidencia para el manejo ambulatorio agudo de la crisis de migraña. Asociación Colombiana de Neurología",
+      "titulo_corto": "Recomendaciones para el manejo ambulatorio agudo de la crisis de migraña",
+      "year": 2026,
+      "journal": "Acta neurológica colombiana",
+      "doi": "10.22379/anc.2075",
+      "authors": [
+        "Juan Diego Jiménez Jaramillo",
+        "Bernardo Uribe García",
+        "Reydmar López-González",
+        "Claudia Marcela Moreno Rodríguez",
+        "Stephania Bohórquez Valderrama",
+        "Sergio Francisco Ramírez García",
+        "Oscar Enrique Pradilla-Vesga",
+        "Paula Cavanzo",
+        "Carolina Guerra Posada",
+        "Marta Liliana Ramos Romero",
+        "Yessika Milena Rojas Villegas",
+        "Natalia Hernández-Beltrán",
+        "José David Martínez Gaviria",
+        "Fidel Sobrino",
+        "Joe Fernando Muñoz-Cerón"
+      ],
+      "cluster": "C01 Crisis aguda y estado migrañoso",
+      "temas": [
+        "T02",
+        "T01"
+      ],
+      "palabras_clave": [
+        "migraña episódica",
+        "tratamiento abortivo",
+        "triptanes",
+        "rimegepant",
+        "AINE",
+        "GRADE",
+        "consenso"
+      ],
+      "fuente": "abstract",
+      "aplicacion": "Tratamiento abortivo ambulatorio de la crisis aguda de migraña en adultos, en el contexto colombiano.",
+      "problema": "Todos los pacientes con migraña presentan crisis agudas de dolor y la evidencia dispersa dificulta un manejo abortivo homogéneo en consulta externa y urgencias ambulatorias.",
+      "propuesta": "Revisión sistemática de la literatura dirigida al tratamiento abortivo de adultos con migraña, con recomendaciones calificadas mediante el sistema GRADE y presentadas por fármaco.",
+      "metodos": "Revisión sistemática de literatura con calificación GRADE; consenso del grupo de trabajo de cefaleas de la Asociación Colombiana de Neurología.",
+      "resultados": "Se presenta la evidencia disponible para el manejo de la crisis aguda con acetaminofén, combinaciones de acetaminofén con cafeína y ASA, ibuprofeno, naproxeno, diclofenaco, ketoprofeno, naratriptán, eletriptán, sumatriptán, la combinación sumatriptán/naproxeno y rimegepant.",
+      "conclusiones": "Se formulan recomendaciones terapéuticas para la crisis aguda de migraña según la evidencia disponible, calificadas con GRADE, para facilitar su aplicación clínica.",
+      "idea_futura": "Medir la adherencia real a estas recomendaciones en consulta ambulatoria colombiana y su efecto sobre el uso de urgencias y el consumo de analgésicos."
+    },
+    {
+      "id": "A004",
+      "slug": "recomendaciones-basadas-en-evidencia-para-el-tratamiento-pre",
+      "title": "Recomendaciones basadas en evidencia para el tratamiento preventivo de la migraña crónica. Asociación Colombiana de Neurología",
+      "titulo_corto": "Recomendaciones para el tratamiento preventivo de la migraña crónica",
+      "year": 2026,
+      "journal": "Acta neurológica colombiana",
+      "doi": "10.22379/anc.2076",
+      "authors": [
+        "Joe Fernando Muñoz-Cerón",
+        "Yessika Milena Rojas Villegas",
+        "Marta Liliana Ramos Romero",
+        "Stephania Bohórquez Valderrama",
+        "Carolina Guerra Posada",
+        "Juan Diego Jiménez Jaramillo",
+        "Natalia Hernández-Beltrán",
+        "Oscar Enrique Pradilla-Vesga",
+        "Sergio Francisco Ramírez García",
+        "Paula Cavanzo",
+        "Reydmar López-González",
+        "Claudia Marcela Moreno Rodríguez",
+        "José David Martínez Gaviria",
+        "Bernardo Uribe García",
+        "Fidel Sobrino"
+      ],
+      "cluster": "C02 Prevención y terapias anti-CGRP",
+      "temas": [
+        "T03",
+        "T06"
+      ],
+      "palabras_clave": [
+        "migraña crónica",
+        "tratamiento preventivo",
+        "topiramato",
+        "onabotulinumtoxinA",
+        "galcanezumab",
+        "atogepant",
+        "GRADE"
+      ],
+      "fuente": "abstract",
+      "aplicacion": "Intervenciones preventivas en adultos con migraña crónica.",
+      "problema": "La migraña crónica deteriora la calidad de vida y representa una carga alta para los sistemas de salud, y no existía un consenso nacional colombiano que ordenara las opciones preventivas por línea de tratamiento.",
+      "propuesta": "Revisión sistemática de la literatura dirigida al tratamiento preventivo de adultos con migraña crónica, con recomendaciones calificadas mediante GRADE.",
+      "metodos": "Revisión sistemática de literatura con calificación GRADE; consenso del grupo de trabajo de cefaleas de la Asociación Colombiana de Neurología.",
+      "resultados": "Topiramato, amitriptilina, flunarizina y divalproato de sodio/ácido valproico se incluyeron como opciones de primera línea; onabotulinumtoxinA, galcanezumab y atogepant quedaron como alternativas de segunda línea.",
+      "conclusiones": "Se presentan recomendaciones para el tratamiento de la migraña crónica basadas en la evidencia disponible y calificadas con el sistema GRADE.",
+      "idea_futura": "Comparar en vida real el costo-efectividad de la segunda línea (anticuerpos anti-CGRP y geptantes) frente a la primera línea en el sistema de salud colombiano, donde el acceso a anti-CGRP sigue restringido."
+    },
+    {
+      "id": "A005",
+      "slug": "recomendaciones-basadas-en-la-evidencia-para-el-tratamiento",
+      "title": "Recomendaciones basadas en la evidencia para el tratamiento preventivo de la migraña episódica. Asociación Colombiana de Neurología",
+      "titulo_corto": "Recomendaciones para el tratamiento preventivo de la migraña episódica",
+      "year": 2026,
+      "journal": "Acta neurológica colombiana",
+      "doi": "10.22379/anc.2081",
+      "authors": [
+        "Stephania Bohórquez Valderrama",
+        "Oscar Enrique Pradilla-Vesga",
+        "Sergio Francisco Ramírez García",
+        "Paula Cavanzo",
+        "Carolina Guerra Posada",
+        "Juan Diego Jiménez Jaramillo",
+        "Marta Liliana Ramos Romero",
+        "Yessika Milena Rojas Villegas",
+        "Reydmar López-González",
+        "Claudia Marcela Moreno Rodríguez",
+        "Natalia Hernández-Beltrán",
+        "José David Martinez",
+        "Bernardo Uribe García",
+        "F Martha Cecilia Mejia",
+        "Joe Fernando Muñoz-Cerón"
+      ],
+      "cluster": "C02 Prevención y terapias anti-CGRP",
+      "temas": [
+        "T03",
+        "T01"
+      ],
+      "palabras_clave": [
+        "migraña episódica",
+        "tratamiento preventivo",
+        "PRISMA 2020",
+        "GRADE",
+        "AHA/ACC",
+        "candesartán",
+        "geptantes"
+      ],
+      "fuente": "abstract",
+      "aplicacion": "Tratamiento preventivo de la migraña episódica en población adulta.",
+      "problema": "La migraña es tres a cuatro veces más frecuente en mujeres y genera discapacidad y costos directos e indirectos; hacía falta una recomendación nacional que jerarquizara las opciones preventivas de la migraña episódica.",
+      "propuesta": "Revisión sistemática de la literatura sobre tratamiento preventivo de adultos con migraña episódica, desarrollada según PRISMA 2020, con evaluación de certeza por GRADE y asignación de clases y niveles de recomendación según el sistema AHA/ACC.",
+      "metodos": "Revisión sistemática según PRISMA 2020 con certeza GRADE y clases de recomendación AHA/ACC; consenso de neurólogos del grupo de cefaleas de la Asociación Colombiana de Neurología.",
+      "resultados": "Candesartán, topiramato, propranolol, metoprolol, amitriptilina, divalproato de sodio/ácido valproico y flunarizina se incluyeron como primera línea; galcanezumab, rimegepant y atogepant quedaron en segunda línea.",
+      "conclusiones": "Se presentan las recomendaciones terapéuticas para la migraña episódica integrando la evidencia según los sistemas GRADE y AHA/ACC, para facilitar su aplicación clínica.",
+      "idea_futura": "Estudiar la brecha entre la recomendación y la prescripción real de preventivos en Colombia, donde solo una fracción pequeña de los pacientes elegibles recibe terapia preventiva."
+    },
+    {
+      "id": "A006",
+      "slug": "recomendaciones-basadas-en-evidencia-para-el-tratamiento-agu",
+      "title": "Recomendaciones basadas en evidencia para el tratamiento agudo intrahospitalario de la migraña. Asociación Colombiana de Neurología",
+      "titulo_corto": "Recomendaciones para el tratamiento agudo intrahospitalario de la migraña",
+      "year": 2026,
+      "journal": "Acta neurológica colombiana",
+      "doi": "10.22379/anc.2085",
+      "authors": [
+        "Carolina Guerra Posada",
+        "Oscar Enrique Pradilla-Vesga",
+        "Sergio Francisco Ramírez García",
+        "Paula Cavanzo",
+        "Stephania Bohórquez Valderrama",
+        "Juan Diego Jiménez Jaramillo",
+        "Marta Liliana Ramos Romero",
+        "Yessika Milena Rojas Villegas",
+        "Reydmar López-González",
+        "Claudia Marcela Moreno Rodríguez",
+        "Natalia Hernández-Beltrán",
+        "José David Martínez Gaviria",
+        "Bernardo Uribe García",
+        "Fidel Sobrino",
+        "Joe Fernando Muñoz-Cerón"
+      ],
+      "cluster": "C01 Crisis aguda y estado migrañoso",
+      "temas": [
+        "T02",
+        "T04"
+      ],
+      "palabras_clave": [
+        "migraña",
+        "tratamiento intrahospitalario",
+        "tratamiento parenteral",
+        "opioides",
+        "GRADE",
+        "PRISMA",
+        "consenso"
+      ],
+      "fuente": "abstract",
+      "aplicacion": "Manejo agudo de la migraña en el ámbito intrahospitalario colombiano.",
+      "problema": "La migraña es uno de los principales motivos de consulta mundial, con gran discapacidad y deterioro de la calidad de vida, y el manejo parenteral hospitalario carecía de un consenso nacional que ordenara los fármacos disponibles en Colombia.",
+      "propuesta": "Consenso de un panel de neurólogos del grupo de trabajo de dolor de cabeza de la Asociación Colombiana de Neurología, con revisión sistemática de la literatura y asesoría epidemiológica para garantizar adherencia a los estándares GRADE y PRISMA.",
+      "metodos": "Consenso de panel con revisión sistemática de la literatura, asesoría epidemiológica y calificación GRADE/PRISMA.",
+      "resultados": "Se describen los fármacos recomendados en Colombia para el tratamiento parenteral, en primera línea (diclofenaco, ketorolaco, dexketoprofeno, metoclopramida, dipirona y dexametasona) y en segunda línea (haloperidol, sulfato de magnesio, lidocaína, ketamina y propofol), además de recomendaciones generales y la exclusión del uso de opioides.",
+      "conclusiones": "Se presentan las recomendaciones para el tratamiento agudo intrahospitalario de la migraña basadas en la metodología de consenso y el sistema GRADE.",
+      "idea_futura": "Evaluar el efecto de retirar los opioides del manejo hospitalario de la migraña sobre la duración de la estancia y las reconsultas a urgencias."
+    },
+    {
+      "id": "A007",
+      "slug": "galcanezumab-for-the-preventive-treatment-of-episodic-and-ch",
+      "title": "Galcanezumab for the preventive treatment of episodic and chronic migraine in real life: A prospective multicenter study in Colombia and Mexico, including effects on anxiety and depression—on behalf of ASOLAC",
+      "titulo_corto": "Galcanezumab en migraña episódica y crónica: vida real en Colombia y México",
+      "year": 2026,
+      "journal": "Cephalalgia Reports",
+      "doi": "10.1177/25158163261418597",
+      "authors": [
+        "Joe Fernando Muñoz-Cerón",
+        "Karina Vélez-Jiménez",
+        "Stephania Bohórquez Valderrama",
+        "Ildefonso Rodríguez‐Leyva",
+        "Natalia Hernández",
+        "Loren Marcela Gallo-Eugenio",
+        "Claudia Moreno-Rodríguez",
+        "Juan Diego Jiménez Jaramillo",
+        "Carolina Guerra Posada",
+        "Marta Liliana Ramos Romero",
+        "Rafael Bernal Cobo",
+        "Yessika Milena Rojas Villegas",
+        "Paula Cavanzo",
+        "Reydmar López-González",
+        "Daniela Gómez-Barrera",
+        "ASOLAC: Asociación Latinoamericana de Cefaleas"
+      ],
+      "cluster": "C02 Prevención y terapias anti-CGRP",
+      "temas": [
+        "T06",
+        "T03",
+        "T07"
+      ],
+      "palabras_clave": [
+        "galcanezumab",
+        "anti-CGRP",
+        "migraña crónica",
+        "migraña episódica",
+        "HIT-6",
+        "GAD-7",
+        "PHQ-9",
+        "ASOLAC",
+        "vida real"
+      ],
+      "fuente": "abstract",
+      "aplicacion": "Pacientes adultos con migraña episódica de alta frecuencia y migraña crónica en Colombia y México, en condiciones de práctica clínica real.",
+      "problema": "El galcanezumab es una opción terapéutica para la migraña de alta frecuencia, pero no existía información sobre sus resultados de tratamiento en Colombia y México.",
+      "propuesta": "Estudio prospectivo, independiente, multicéntrico y de vida real en 98 pacientes ≥ 18 años que recibieron galcanezumab 240 mg como dosis de carga y luego 120 mg mensuales, con comparaciones al inicio, a los 3 y a los 6 meses de días de migraña al mes, HIT-6, GAD-7, PHQ-9, días de analgésico, autopercepción global y efectos adversos.",
+      "metodos": "Estudio prospectivo, independiente, multicéntrico de vida real; análisis comparativo al inicio, 3 y 6 meses con pruebas no paramétricas; 98 pacientes en Colombia y México.",
+      "resultados": "Se incluyeron 98 pacientes (edad media 43,6 años, DE 12,91; rango 18-82; 85,7 % mujeres), con 72,4 % de migraña crónica y 27,6 % episódica al inicio. En la migraña episódica los días de migraña bajaron de 6,3 (RIQ 3,5-9) a 3,6 (RIQ 1,7-5) a los 6 meses (p = 0,01); en la crónica pasaron de 24,2 (RIQ 22,9-24,9) a 12,4 (RIQ 10,9-13,2) al mes 3 y a 10 (RIQ 8,7-11,6) al final del seguimiento (p < 0,01). HIT-6, GAD-7 y PHQ-9 fueron significativamente menores a los 3 y 6 meses. El estreñimiento de novo apareció en el 8 % de los participantes.",
+      "conclusiones": "El estudio aporta evidencia de la efectividad del galcanezumab en vida real, incluido su impacto sobre variables psiquiátricas como ansiedad y depresión.",
+      "idea_futura": "Extender el seguimiento más allá de 6 meses y comparar la respuesta entre países con distinto nivel de acceso y cobertura, para informar decisiones de financiación del anti-CGRP en la región."
+    },
+    {
+      "id": "A008",
+      "slug": "migraine-care-in-latin-america-insights-from-the-latin-ameri",
+      "title": "Migraine care in Latin America: Insights from the Latin American Headache Association (ASOLAC)",
+      "titulo_corto": "Atención de la migraña en América Latina: inequidades y recomendaciones de ASOLAC",
+      "year": 2026,
+      "journal": "Cephalalgia Reports",
+      "doi": "10.1177/25158163261456215",
+      "authors": [
+        "María-Karina Vélez-Jiménez",
+        "Pablo Schubaroff",
+        "Marco Lisicki Martinez",
+        "Mário Fernando Prieto Peres",
+        "Ivy Liger Riso",
+        "Loren Marcela Gallo-Eugenio",
+        "Yessika Milena Rojas Villegas",
+        "Raúl P. Juliet",
+        "María José López",
+        "Ernesto Bancalari",
+        "María Teresa Valadez Reyes",
+        "Ildefonso Rodríguez‐Leyva"
+      ],
+      "cluster": "C03 Sistemas de salud y equidad en cefaleas",
+      "temas": [
+        "T05",
+        "T01"
+      ],
+      "palabras_clave": [
+        "migraña",
+        "América Latina",
+        "ASOLAC",
+        "inequidad en salud",
+        "acceso a tratamiento",
+        "educación médica",
+        "telemedicina",
+        "anti-CGRP"
+      ],
+      "fuente": "abstract",
+      "aplicacion": "Sistemas de salud y atención de la migraña en Argentina, Brasil, Chile, Colombia, Perú y México.",
+      "problema": "La migraña afecta al 9,3 % de los latinoamericanos pero sigue subdiagnosticada y subtratada, con inequidades de acceso que no habían sido comparadas entre países de la región.",
+      "propuesta": "Síntesis de datos epidemiológicos, análisis de sistemas de salud e informes de sociedades profesionales para comparar acceso a tratamiento, educación médica y modelos de atención entre los seis países, con búsqueda en PubMed, SciELO, informes de la OMS y documentos de ASOLAC para el periodo 2015-2025.",
+      "metodos": "Análisis comparativo de sistemas de salud y síntesis de literatura (PubMed, SciELO, OMS, documentos ASOLAC, 2015-2025) con búsqueda realizada por autores de cada país.",
+      "resultados": "Pese a una cobertura de salud alta (91,5-99,6 %), persisten brechas: la razón neurólogo/población es crítica (1:47.000 a 58.000) y los especialistas se concentran en zonas urbanas; la formación de pregrado dedica apenas 2-4 horas a cefaleas; el uso de triptanes varía de 0,14 % (urgencias mexicanas) a 23 % (neurólogos peruanos); los anti-CGRP quedan restringidos al sector privado; solo el 2,6 % de los pacientes brasileños elegibles recibe terapia preventiva; en zonas rurales la espera por especialista es de 3-5 años y las urgencias siguen sobrecargadas (179.618 consultas por migraña en México entre 2013 y 2022).",
+      "conclusiones": "A pesar de la fuerte cobertura sanitaria, la atención de la migraña requiere una reforma sistemática: ampliar el acceso a triptanes en el sistema público, estandarizar la educación médica, desarrollar redes de telemedicina y coordinar la promoción para distinguir cefalea primaria de secundaria.",
+      "idea_futura": "Convertir las recomendaciones en indicadores medibles por país (acceso a triptanes, horas de formación en cefalea, tiempos de espera) y evaluar si las redes de telemedicina cierran la brecha rural."
+    },
+    {
+      "id": "A009",
+      "slug": "reply-to-novoa-me-et-al-author-comment-re-velez-jimenez-m-et",
+      "title": "Reply to: Novoa ME., et al. Author comment Re: Velez-Jimenez M., et al.",
+      "titulo_corto": "Réplica a Novoa ME. y colaboradores sobre la atención de la migraña en América Latina",
+      "year": 2026,
+      "journal": "Cephalalgia Reports",
+      "doi": "10.1177/25158163261491881",
+      "authors": [
+        "María-Karina Vélez-Jiménez",
+        "Pablo Schubaroff",
+        "Marco Lisicki Martinez",
+        "Mário Fernando Prieto Peres",
+        "Ivy Liger Riso",
+        "Joe Fernando Muñoz-Cerón",
+        "Yessika Milena Rojas Villegas",
+        "Raúl P. Juliet",
+        "María José López",
+        "Ernesto Bancalari",
+        "María Teresa Valadez Reyes",
+        "Ildefonso Rodríguez‐Leyva"
+      ],
+      "cluster": "C03 Sistemas de salud y equidad en cefaleas",
+      "temas": [
+        "T05"
+      ],
+      "palabras_clave": [
+        "migraña",
+        "América Latina",
+        "ASOLAC",
+        "carta al editor",
+        "discusión académica"
+      ],
+      "fuente": "titulo",
+      "aplicacion": "Discusión académica sobre el artículo de atención de la migraña en América Latina de ASOLAC.",
+      "problema": "La publicación de ASOLAC recibió una carta de Novoa ME. y colaboradores que requería respuesta de los autores.",
+      "propuesta": "Carta de réplica de los autores del artículo original, firmada por el grupo ASOLAC, en Cephalalgia Reports.",
+      "metodos": "Carta de réplica y comentario de autor.",
+      "resultados": "No reportado: la revista no publica resumen de la réplica.",
+      "conclusiones": "No reportado en el resumen; la pieza defiende e interpreta los hallazgos del artículo original ante las observaciones recibidas.",
+      "idea_futura": "Sistematizar las objeciones recibidas a los estudios regionales como insumo para futuras versiones de las recomendaciones de ASOLAC."
+    }
+  ]
+}
