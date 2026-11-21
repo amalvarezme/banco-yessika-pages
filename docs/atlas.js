@@ -3,6 +3,9 @@ import { montarVisor } from './atlas-visor.js';
 
 const porId = id => document.getElementById(id);
 const estado = porId('estado-atlas');
+const parametros = new URLSearchParams(location.search);
+const integrado = parametros.get('embed') === '1' && window !== window.top;
+if (integrado) document.body.classList.add('atlas-integrado');
 
 function texto(tag, valor) {
   const el = document.createElement(tag);
@@ -18,7 +21,7 @@ function iniciar(atlas) {
   const cielo = porId('cielo');
   const bienvenida = [...detalle.childNodes];
   const visor = montarVisor(cielo, atlas, {
-    plano: new URLSearchParams(location.search).get('view') === '2d', elegir,
+    plano: parametros.get('view') === '2d', elegir,
   });
   let actual;
   cielo.dataset.disposicion = 'cielo';
@@ -26,7 +29,10 @@ function iniciar(atlas) {
   cielo.dataset.planetas = atlas.sistemas.reduce((total, s) => total + s.nodos.length - 1, 0);
   estado.textContent = visor.modo === '3d' ? 'Vista 3D · WebGL' : 'Vista 2D · Sin necesidad de WebGL';
   const modo = porId('modo-atlas');
-  if (visor.modo === '2d') { modo.href = './constelacion.html'; modo.textContent = 'Intentar vista 3D'; }
+  const alternativa = new URLSearchParams(integrado ? { embed: '1' } : {});
+  if (visor.modo === '3d') alternativa.set('view', '2d');
+  else modo.textContent = 'Intentar vista 3D';
+  modo.href = `constelacion.html${alternativa.size ? `?${alternativa}` : ''}`;
 
   for (const s of atlas.sistemas) {
     const opcion = document.createElement('option');
@@ -55,6 +61,7 @@ function iniciar(atlas) {
     const { item } = n.sistema;
     const ficha = texto('a', 'Abrir ficha en el catálogo');
     ficha.href = `./#${encodeURIComponent(item.id)}`;
+    if (integrado) ficha.target = '_top';
     detalle.replaceChildren(texto('p', `${item.id} · ${item.year} · ${n.sistema.cluster?.name || 'Sin clúster'}`),
       texto('h2', item.title), texto('p', n.detalle || item.journal), ficha);
     for (const [i, boton] of [...planetas.children].entries()) {

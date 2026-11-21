@@ -114,8 +114,9 @@ async function cargar() {
     if (!respuesta.ok) throw new Error(`HTTP ${respuesta.status}`);
     const datos = await respuesta.json();
     const abrir = iniciar(datos);
-    iniciarConstelacion(datos, abrir);
-    if (location.hash) abrir(location.hash.slice(1));
+    const abrirDesdeHash = () => abrir(location.hash.slice(1));
+    window.addEventListener('hashchange', abrirDesdeHash);
+    if (location.hash) abrirDesdeHash();
   } catch {
     estado.textContent = 'No se pudo cargar el catálogo. ';
     const reintentar = texto('a', 'Volver a cargar');
@@ -123,5 +124,17 @@ async function cargar() {
     estado.append(reintentar);
   }
 }
+
+const visor = porId('visor-integrado');
+let medirVisor;
+visor.addEventListener('load', () => {
+  medirVisor?.disconnect();
+  const cuerpo = visor.contentDocument?.body;
+  if (!cuerpo) return;
+  medirVisor = new ResizeObserver(() => {
+    visor.style.height = `${Math.ceil(cuerpo.getBoundingClientRect().height)}px`;
+  });
+  medirVisor.observe(cuerpo);
+});
 
 cargar();

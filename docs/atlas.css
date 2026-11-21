@@ -37,3 +37,7 @@ aside h2 { margin: 0 0 .35rem; font-size: 1.05rem; }
   #cielo { height: clamp(300px, 52vh, 520px); }
   aside { border-inline-start: 0; border-block-start: 1px solid #364662; }
 }
+
+.atlas-integrado header { display: none; }
+.atlas-integrado main { padding-block: .1rem .6rem; }
+.atlas-integrado #cielo { height: clamp(19rem, 54vw, 34rem); }

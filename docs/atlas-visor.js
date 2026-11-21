@@ -1,9 +1,26 @@
 import * as T from 'three';
 import { OrbitControls } from './vendor/three/OrbitControls.js';
 
+const fondo = '#080a12';
+
+function texturaHalo() {
+  const canvas = document.createElement('canvas');
+  canvas.width = canvas.height = 64;
+  const ctx = canvas.getContext('2d');
+  const degradado = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+  degradado.addColorStop(0, '#fff');
+  degradado.addColorStop(.33, '#fffc');
+  degradado.addColorStop(.58, '#fff5');
+  degradado.addColorStop(1, '#fff0');
+  ctx.fillStyle = degradado;
+  ctx.fillRect(0, 0, 64, 64);
+  return new T.CanvasTexture(canvas);
+}
+
 export function montarVisor(host, atlas, { plano, elegir }) {
   const escena = new T.Scene();
-  escena.background = new T.Color('#070c19');
+  escena.background = new T.Color(fondo);
+  escena.fog = new T.FogExp2(fondo, .015);
   const camara = new T.PerspectiveCamera(43, 1, .1, 180);
   let lienzo = document.createElement('canvas');
   let webgl;
@@ -24,6 +41,7 @@ export function montarVisor(host, atlas, { plano, elegir }) {
   orbita.maxDistance = 85;
   orbita.autoRotateSpeed = .42;
   const esfera = new T.SphereGeometry(1, 20, 14);
+  const brillo = webgl ? texturaHalo() : null;
   const nodos = atlas.sistemas.flatMap(s => s.nodos);
   let layout = 'cielo', filtro = '', activo = null, mostrar = true, frame = 0;
   let ancho, alto, puntos = [];
@@ -40,17 +58,13 @@ export function montarVisor(host, atlas, { plano, elegir }) {
     const geometria = new T.BufferGeometry().setFromPoints(vertices);
     const material = tipo === 'estrellas'
       ? new T.PointsMaterial({ color, size: .052, transparent: true, opacity: opacidad })
-      : new T.LineBasicMaterial({ color, transparent: true, opacity: opacidad });
+      : new T.LineBasicMaterial({ color, transparent: true, opacity: opacidad, depthWrite: false,
+          blending: tipo === 'arco' ? T.AdditiveBlending : T.NormalBlending });
     return tipo === 'estrellas' ? new T.Points(geometria, material) : new T.Line(geometria, material);
   }
   const estrellas = Array.from({ length: 330 }, (_, i) => new T.Vector3(
     37 * Math.sin(i * 12.9898), 23 * Math.cos(i * 6.917), 35 * Math.sin(i * 17.37)));
-  if (webgl) {
-    escena.add(trazo(estrellas, '#97b4ee', .45, 'estrellas'));
-    const luz = new T.DirectionalLight('#e5ecff', 2.1);
-    luz.position.set(8, 14, 12);
-    escena.add(new T.AmbientLight('#b9ccf5', 1.8), luz);
-  }
+  if (webgl) escena.add(trazo(estrellas, '#97b4ee', .57, 'estrellas'));
   let trazos = [];
   function centro(s) { return layout === 'grupos' ? s.agrupado : s.lugar; }
   function lugar(s, radio, angulo) {
@@ -67,7 +81,7 @@ export function montarVisor(host, atlas, { plano, elegir }) {
   function actualizar() {
     const anteriores = trazos;
     trazos = [];
-    const linea = (vertices, color, alpha) => trazos.push({ vertices, color, alpha });
+    const linea = (vertices, color, alpha, tipo) => trazos.push({ vertices, color, alpha, tipo });
     for (const s of atlas.sistemas) {
       for (const radio of new Set(s.nodos.slice(1).map(n => n.distancia))) {
         linea(Array.from({ length: 41 }, (_, i) => lugar(s, radio, i * Math.PI / 20)), '#607396', .46 * opacidad(s));
@@ -75,27 +89,34 @@ export function montarVisor(host, atlas, { plano, elegir }) {
       for (const n of s.nodos) {
         n.pos = lugar(s, n.distancia, n.angulo);
         if (webgl && !n.malla) {
-          const material = n.clave === 'sol' ? new T.MeshBasicMaterial() : new T.MeshStandardMaterial();
-          n.malla = new T.Mesh(esfera, material);
-          escena.add(n.malla);
+          // Como en LIA/Juli, el núcleo no recibe luz: la emisión visible es un halo aditivo.
+          n.malla = new T.Mesh(esfera, new T.MeshBasicMaterial());
+          n.halo = new T.Sprite(new T.SpriteMaterial({ map: brillo, color: n.color,
+            transparent: true, depthWrite: false, blending: T.AdditiveBlending }));
+          escena.add(n.malla, n.halo);
         }
         if (n.malla) {
+          const alpha = opacidad(s);
+          const radio = n.radio * (n === activo ? 1.35 : 1);
           n.malla.position.copy(n.pos);
-          n.malla.scale.setScalar(n.radio * (n === activo ? 1.35 : 1));
-          n.malla.material.color.set(n.color).multiplyScalar(.09 + .91 * opacidad(s));
+          n.malla.scale.setScalar(radio);
+          n.malla.material.color.set(n.color).multiplyScalar(.04 + .96 * alpha);
+          n.halo.position.copy(n.pos);
+          n.halo.scale.setScalar(radio * (n.clave === 'sol' ? 7 : 4.4));
+          n.halo.material.opacity = alpha * (n.clave === 'sol' ? .74 : .48);
         }
       }
     }
     for (const { a, b } of atlas.arcos) {
       const medio = centro(a).clone().lerp(centro(b), .5);
       medio.y += 1.2 + centro(a).distanceTo(centro(b)) * .22;
-      linea(new T.QuadraticBezierCurve3(centro(a), medio, centro(b)).getPoints(32), '#8d9edb', .58 * Math.min(opacidad(a), opacidad(b)));
+      linea(new T.QuadraticBezierCurve3(centro(a), medio, centro(b)).getPoints(32), '#8d9edb', .65 * Math.min(opacidad(a), opacidad(b)), 'arco');
     }
     if (webgl) {
       for (const { figura } of anteriores) {
         escena.remove(figura); figura.geometry.dispose(); figura.material.dispose();
       }
-      for (const t of trazos) { t.figura = trazo(t.vertices, t.color, t.alpha); escena.add(t.figura); }
+      for (const t of trazos) { t.figura = trazo(t.vertices, t.color, t.alpha, t.tipo); escena.add(t.figura); }
     }
     pedir();
   }
@@ -104,7 +125,7 @@ export function montarVisor(host, atlas, { plano, elegir }) {
     return { x: (p.x + 1) * ancho / 2, y: (1 - p.y) * alto / 2, z: p.z };
   }
   function dibujarPlano() {
-    ctx.fillStyle = '#070c19'; ctx.fillRect(0, 0, ancho, alto);
+    ctx.fillStyle = fondo; ctx.fillRect(0, 0, ancho, alto);
     ctx.fillStyle = '#53658b';
     for (const estrella of estrellas) {
       const p = proyectar(estrella);
